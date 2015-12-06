@@ -42,6 +42,11 @@ if len(lines) % 3 != 0:
     exit()
     
 lineCounter = 3;
+xmin = 100000;
+xmax = -1;
+ymin = 100000;
+ymax = -1;
+
 while 'true':
     if lineCounter == len(lines):
         break
@@ -52,13 +57,28 @@ while 'true':
     triallabel = lines[lineCounter+2]
     lineCounter += 3
     
-    plt.errorbar(timen, data, yerr=.005, label=triallabel)
+    datamax = np.asarray(data).max()
+    stdmax = np.asarray(stddata).max()
+    datamin = np.asarray(data).min()
+    stdmin = np.asarray(stddata).min()
+    
+    if datamax+stdmax > ymax:
+        ymax = datamax+stdmax
+        
+    if datamin+stdmin < ymin:
+        ymin = datamin-stdmin
+    
+    plt.errorbar(timen, data, yerr=stddata, label=triallabel)
+
+xmin = np.asarray(timen).min()
+xmax = np.asarray(timen).max() + 10
 
 fig = plt.figure(1)
 
 plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.subplots_adjust(left=None, bottom=None, right=.75, top=None, wspace=None, hspace=None)
 
-plt.xlim(0, 130)
-plt.ylim(.95, 1.25)
+plt.xlim(xmin, xmax)
+plt.ylim(ymin, ymax)
 
 plt.show()
