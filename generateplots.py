@@ -8,8 +8,7 @@ Y-Axis label
     [Y Trial Data]
     [Y Trial Std]
     Y Trial Label
-    
-    x numTrials
+    (x numTrials)
 '''
 
 import numpy as np
