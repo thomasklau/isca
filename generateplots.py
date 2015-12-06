@@ -65,7 +65,7 @@ while 'true':
     if datamax+stdmax > ymax:
         ymax = datamax+stdmax
         
-    if datamin+stdmin < ymin:
+    if datamin-stdmin < ymin:
         ymin = datamin-stdmin
     
     plt.errorbar(timen, data, yerr=stddata, label=triallabel)
