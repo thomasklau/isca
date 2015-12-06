@@ -3,5 +3,7 @@ This repository contains scripts to extract fluorescent values from GFP images. 
 
 # Dependencies
 [**Python (>=2.6)**](https://www.python.org/downloads/)
+
 [**numpy (>=1.6.1)**](http://www.numpy.org/)
+
 [**matplotlib (>=1.5.0)**](http://matplotlib.org/)
